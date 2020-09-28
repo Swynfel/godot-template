@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Godot;
 
 namespace Utils {
-    internal static class Encoding {
-        public static PropertyUsageFlags PROPERTY_USAGE_EXPORT = PropertyUsageFlags.ScriptVariable;
+    public static class Encoding {
         public static Godot.Collections.Array<T> ToGodotArray<T>(this IEnumerable<T> enumerable) {
             return new Godot.Collections.Array<T>(enumerable);
         }
@@ -35,6 +34,11 @@ namespace Utils {
         public static long DecodeNumeric(string s) {
             s = s + "AAAAAAAAAAA=".Substring(s.Length);
             return BitConverter.ToInt64(Convert.FromBase64String(s), 0);
+        }
+
+        public static int DecodeInt(string s) {
+            s = s + "AAAAAA==".Substring(s.Length);
+            return BitConverter.ToInt32(Convert.FromBase64String(s), 0);
         }
     }
 }
