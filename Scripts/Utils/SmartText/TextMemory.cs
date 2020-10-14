@@ -12,8 +12,8 @@ namespace Utils {
         public const string BBCODE = "[rem][url={1}]{0}[/url][/rem]";
 
         public struct MetaTag {
-            public char group { get; init; }
-            public string key { get; init; }
+            public char group { get; set; }
+            public string key { get; set; }
             public string Box(string s) {
                 return string.Format(BBCODE, s, this);
             }
